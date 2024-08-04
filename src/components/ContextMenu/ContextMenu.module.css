@@ -1,0 +1,15 @@
+.contextMenu {
+    position: absolute;
+    display: flex;
+    border-radius: 5px;
+    width: 170px;
+    background-color: #fff;
+    box-shadow: 0 3px 5px 1px #414141;
+}
+
+.wrapper {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    list-style: none;
+}

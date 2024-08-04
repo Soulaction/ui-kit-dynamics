@@ -1,0 +1,34 @@
+.button {
+    display: block;
+    padding: 5px;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+}
+
+.button {
+    transition: box-shadow .5s;
+}
+
+.button:hover {
+    cursor: pointer;
+    box-shadow: 0 0 5px 1px #c1c1c1;
+}
+
+.button img {
+    display: block;
+}
+
+.btnItem {
+    padding: 7px;
+    border-radius: 3px;
+    width: 100%;
+    text-align: left;
+    height: initial;
+}
+
+.btnItem:hover {
+    background-color: #f5f3f3;
+    box-shadow: none;
+}

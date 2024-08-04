@@ -1,0 +1,45 @@
+:root {
+    --color-primary: #cbf3fa;
+    --color-danger: #f80000;
+}
+
+.input {
+    margin: 0;
+    color: #4b5563;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.input:hover:not(:disabled):not(.input-invalid) {
+    border: 1px solid var(--color-primary);
+}
+
+.input:focus:not(:disabled):not(.input-invalid) {
+    box-shadow: 0 0 0 2px #a5f3fc;
+    border: 1px solid #06b6d4;
+}
+
+.input-invalid {
+    border: 1px solid var(--color-danger);
+}
+
+.input-invalid:focus {
+    box-shadow: 0 0 0 1px #ff4c4c;
+}
+
+.input-small {
+    padding: 3px 8px;
+    font-size: 0.8rem;
+}
+
+.input-normal {
+    padding: 5px 10px;
+    font-size: 1rem;
+}
+
+.input-large {
+    padding: 7px 12px;
+    font-size: 1.2rem;
+}

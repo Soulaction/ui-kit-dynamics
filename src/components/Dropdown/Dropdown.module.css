@@ -1,0 +1,49 @@
+.inputDropdown {
+    display: flex;
+    box-sizing: border-box;
+    padding: 5px;
+    width: 250px;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.dropdownLabel {
+    display: block;
+    width: 100%;
+}
+
+.placeholder {
+    color: #9fa1a5;
+}
+
+/*@TODO Вынести общие стили в глобальные
+    - Сделать закрытие по клику во вне
+    - Сделать тень только снизу*/
+.inputDropdown:hover {
+    border: 1px solid var(--color-primary);
+}
+
+.inputDropdown:focus {
+    box-shadow: 0 0 0 2px #a5f3fc;
+    border: 1px solid #06b6d4;
+}
+
+.dropdownLabelIcon {
+    display: block;
+    height: 20px;
+}
+
+.list {
+    position: absolute;
+    z-index: 9999;
+    overflow: auto;
+    width: 250px;
+    max-height: 150px;
+    background-color: #fff;
+    box-shadow: 0 0 5px 1px #999b9f;
+    border-radius: 5px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}

@@ -1,0 +1,48 @@
+.dialogWrapper {
+    display: flex;
+    background-color: rgba(0, 0, 0, .4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+}
+
+.dialog {
+    position: absolute;
+    z-index: 1001;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    resize: both;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 1px black;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    background-color: #ececf1;
+    cursor: move;
+}
+
+.headerButton:first-of-type {
+    margin-left: auto;
+}
+
+.headerTitle {
+    margin: 5px 10px;
+    padding: 0;
+}
+
+.content {
+    padding: 10px;
+    overflow: auto;
+    margin-bottom: 7px;
+}
