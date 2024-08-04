@@ -5,33 +5,12 @@ import maxsize from "../../assets/maximize.svg";
 import minsize from "../../assets/minimize.svg";
 
 interface DialogProps {
-    /**
-     * Добавляет заголовок в шапку модального окна
-     * */
     header: string;
-    /**
-     * Отвечает за видимость модального окна
-     * */
     visible: boolean;
-    /**
-     * Функция по закрытию модального окна
-     * */
     onHide: () => void;
-    /**
-     * Стили модального окна
-     * */
     style?: CSSProperties | undefined;
-    /**
-     * Кнопка для увеличения во весь экран
-     * */
     maximizable?: boolean;
-    /**
-     * Указывает на возможность перетягивания
-     * */
     draggable?: boolean;
-    /**
-     * Позволяет передавать контент в виде jsx внутрь модального окна
-     * */
     children?: ReactNode
 }
 

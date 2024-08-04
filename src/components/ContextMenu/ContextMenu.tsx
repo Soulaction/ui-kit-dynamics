@@ -3,7 +3,7 @@ import s from './ContextMenu.module.css';
 
 interface ContextMenuProps {
     items: MenuItem[];
-    styles?: CSSProperties;
+    style?: CSSProperties | undefined;
 }
 
 export interface MenuItem {
@@ -16,9 +16,8 @@ export type ContextMenuRef = {
 }
 
 const ContextMenu = forwardRef<ContextMenuRef, ContextMenuProps>(({
-                                                                           items,
-                                                                           styles
-                                                                       }, ref) => {
+                                                                           items = [],
+                                                                           style                                                                       }, ref) => {
 
     const [showData, setShowData] = useState<{ top: number, left: number } | null>(null);
     console.log('ContextMenu');
@@ -45,8 +44,12 @@ const ContextMenu = forwardRef<ContextMenuRef, ContextMenuProps>(({
         setShowData({top: mouseEvent.clientY + 1, left: mouseEvent.clientX + 1})
     }
 
+    if(items.length === 0) {
+        return;
+    }
+
     return (
-        showData && <div className={s.contextMenu} style={{...styles, ...showData}}>
+        showData && <div className={s.contextMenu} style={{...style, ...showData}}>
             <ul className={s.wrapper}>
                 {items.map(item =>
                     <li key={item.label}>

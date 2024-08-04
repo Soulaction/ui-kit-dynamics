@@ -2,21 +2,10 @@ import React, {memo, useEffect} from 'react';
 import s from "./Button.module.css";
 
 interface ButtonProps {
-    /**
-     * Название внутри кнопки
-     */
+
     label: string;
-    /**
-     * Размер кнопки
-     */
     size?: 'small' | 'normal' | 'large';
-    /**
-     * Тип кнопки
-     */
     typeButton?: 'primary' | 'success' | 'danger';
-    /**
-     * Признак того, заблокирована или нет
-     */
     disabled?: boolean;
     onClick: () => void;
 }
