@@ -53,8 +53,7 @@ const DialogHooks = (args) => {
     return (
         <>
             <Button label={'Модальное окно'} onClick={() => setVisible(true)}/>
-            <Dialog {...args} visible={isVisible} onHide={() => setVisible(false)}>
-            </Dialog>
+            <Dialog {...args} visible={isVisible} onHide={() => setVisible(false)}></Dialog>
         </>
     );
 };

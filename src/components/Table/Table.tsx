@@ -1,6 +1,6 @@
 import React, {CSSProperties, memo, ReactNode, useEffect} from 'react';
 import s from './Table.module.css'
-import {ContextMenuRef} from "@/components/ContextMenu/ContextMenu";
+import {ContextMenuRef} from "../ContextMenu/ContextMenu";
 
 interface TableProps {
     column: Column[];
@@ -17,9 +17,9 @@ export interface Column {
     templateBody?: ReactNode | ((data: any) => React.ReactNode);
 }
 
-const Table = ({selectedItem, contextMenuRef, changeSelectedItem, value, tableStyle, column}: TableProps) => {
+const Table = ({selectedItem, contextMenuRef, changeSelectedItem, value = [], tableStyle, column = []}: TableProps) => {
 
-    console.log('Table');
+    console.log('Table', );
 
     useEffect(() => {
         console.log('useEffect Table');
@@ -48,8 +48,8 @@ const Table = ({selectedItem, contextMenuRef, changeSelectedItem, value, tableSt
     }
 
     const howContextMenu = (evt, val) => {
-        if (contextMenuRef.current) {
-            changeSelectedItem(val)
+        if (contextMenuRef?.current) {
+            changeSelectedItem && changeSelectedItem(val)
             contextMenuRef.current.show(evt);
         }
     }

@@ -1,7 +1,6 @@
 import React, {CSSProperties, useEffect, useRef, useState} from 'react';
-import arrowDown from '@/assets/arrowDown.svg'
+import arrowDown from '../../assets/arrowDown.svg'
 import s from './Dropdown.module.css'
-import {inspect} from "util";
 
 interface DropdownProps {
     items: any[];
@@ -13,12 +12,12 @@ interface DropdownProps {
     styles?: CSSProperties;
 }
 
-const Dropdown = ({items, selectItem, selectedItem, placeholder = '', label = 'label', value, styles}: DropdownProps) => {
+const Dropdown = ({items = [], selectItem, selectedItem, placeholder = '', label = 'label', value, styles}: DropdownProps) => {
 
     const [isShow, setIsShow] = useState<boolean>(false);
     const [positionCSSList, setPositionCSSList] = useState<CSSProperties>({});
     const inputDropdown = useRef<HTMLDivElement>();
-    const stylePlaceHolder = !selectItem && placeholder?  s.placeholder : ''
+    const stylePlaceHolder = !selectItem && placeholder?  s.placeholder : '';
 
     useEffect(() => {
 

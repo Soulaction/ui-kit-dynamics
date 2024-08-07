@@ -16,8 +16,9 @@ export type ContextMenuRef = {
 }
 
 const ContextMenu = forwardRef<ContextMenuRef, ContextMenuProps>(({
-                                                                           items = [],
-                                                                           style                                                                       }, ref) => {
+                                                                      items = [],
+                                                                      style
+                                                                  }, ref) => {
 
     const [showData, setShowData] = useState<{ top: number, left: number } | null>(null);
     console.log('ContextMenu');
@@ -44,7 +45,7 @@ const ContextMenu = forwardRef<ContextMenuRef, ContextMenuProps>(({
         setShowData({top: mouseEvent.clientY + 1, left: mouseEvent.clientX + 1})
     }
 
-    if(items.length === 0) {
+    if (items.length === 0) {
         return;
     }
 
