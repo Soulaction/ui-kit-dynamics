@@ -3,12 +3,12 @@ export type ToastRef = {
 }
 
 export type ToastProps = {
-    position?: 'top left' | 'top center' | 'top right' | 'bottom right';
+    position?: 'top left' | 'center center' | 'top right' | 'bottom right';
 }
 
 export type Message = {
     id?: number | undefined;
-    severity: SeverityType | undefined;
+    severity: SeverityType;
     summary: string | undefined;
     detail?: string | undefined;
     life?: number | undefined;

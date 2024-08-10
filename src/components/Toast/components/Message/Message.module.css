@@ -7,12 +7,13 @@
 }
 
 .iconContainer {
-    width: 45%;
-    height: 30px;
+    width: 45px;
+    height: 31px;
     mask-size: cover;
 }
 
 .content {
+    width: 100%;
     padding: 0 15px;
 }
 

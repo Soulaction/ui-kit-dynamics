@@ -15,7 +15,7 @@ interface ButtonProps {
  */
 export const Button = memo(({
                     label,
-                    typeButton,
+                    typeButton = 'primary',
                     size = 'normal',
                     onClick,
                     ...props

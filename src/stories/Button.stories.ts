@@ -1,7 +1,6 @@
 import type {Meta, StoryObj} from '@storybook/react';
 import {action} from '@storybook/addon-actions';
 import {Button} from '../components/Button/Button';
-import ContextMenu from "../components/ContextMenu/ContextMenu";
 
 export default {
     title: 'Components/Button',

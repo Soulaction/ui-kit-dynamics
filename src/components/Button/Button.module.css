@@ -1,9 +1,3 @@
-:root {
-    --color-primary: #06b6d4;
-    --color-success: #0bcb38;
-    --color-danger: #f80000;
-}
-
 .button {
     margin: 0;
     padding: 7px;

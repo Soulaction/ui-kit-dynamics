@@ -1,10 +1,10 @@
 import React from 'react';
 import s from './Message.module.css'
-import {Message as MessageType} from "@/components/Toast/types/Message";
-import cross from "@/assets/cross.svg";
-import check from "@/assets/check.svg";
-import info from "@/assets/info.svg";
-import error from "@/assets/error.svg";
+import {Message as MessageType} from "../../types/Message";
+import cross from "../../../../assets/cross.svg";
+import check from "../../../../assets/check.svg";
+import info from "../../../../assets/info.svg";
+import error from "../../../../assets/error.svg";
 
 interface MessageProps {
     messageInfo: MessageType;
@@ -21,6 +21,10 @@ interface ConfigMsg {
 const Message = ({messageInfo, onHide}: MessageProps) => {
 
     const config: ConfigMsg = {color: '', img: '', background: ''};
+
+    if(!(messageInfo.severity && (messageInfo.summary || messageInfo.detail))) {
+        return null;
+    }
 
     switch (messageInfo.severity) {
         case 'success':

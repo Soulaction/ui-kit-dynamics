@@ -1,20 +1,15 @@
 import {Meta, StoryObj} from "@storybook/react";
 import ContextMenu, {ContextMenuRef} from "../components/ContextMenu/ContextMenu";
 import {action} from "@storybook/addon-actions";
-import {Dialog} from "../components/Dialog/Dialog";
 import React, {useRef} from "react";
 
-export default {
+const meta: Meta<typeof ContextMenu> = {
     title: 'Components/ContextMenu',
     component: ContextMenu,
     parameters: {
         layout: 'centered',
     },
-
     tags: ['autodocs'],
-    args: {
-        onClick: action('button-click')
-    },
     argTypes: {
         items: {
             description: "Массив элементов списка"
@@ -23,7 +18,9 @@ export default {
             description: "Стили контекстного меню"
         }
     }
-} as Meta<typeof ContextMenu>;
+};
+
+export default meta;
 
 type Story = StoryObj<typeof ContextHooks>;
 
