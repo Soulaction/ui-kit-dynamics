@@ -1,4 +1,4 @@
-import {MutableRefObject, SyntheticEvent, useCallback, useEffect, useRef, useState} from "react";
+import {MutableRefObject, SyntheticEvent, useCallback, useEffect, useState} from "react";
 
 export interface FormControl<K> {
     register: (controlName: string, validateOption: ValidateOption[]) => ControlProperty;
