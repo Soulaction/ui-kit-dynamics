@@ -1,4 +1,4 @@
-import React, {CSSProperties, memo, ReactNode, useEffect} from 'react';
+import React, {CSSProperties, memo, ReactNode, SyntheticEvent, useEffect} from 'react';
 import s from './Table.module.css'
 import {ContextMenuRef} from "../ContextMenu/ContextMenu";
 
@@ -17,7 +17,7 @@ export interface Column {
     templateBody?: ReactNode | ((data: any) => React.ReactNode);
 }
 
-const Table = ({selectedItem, contextMenuRef, changeSelectedItem, value = [], tableStyle, column = []}: TableProps) => {
+export const Table = ({selectedItem, contextMenuRef, changeSelectedItem, value = [], tableStyle, column = []}: TableProps) => {
 
     console.log('Table', );
 
@@ -47,7 +47,7 @@ const Table = ({selectedItem, contextMenuRef, changeSelectedItem, value = [], ta
         return true;
     }
 
-    const howContextMenu = (evt, val) => {
+    const howContextMenu = (evt: SyntheticEvent, val) => {
         if (contextMenuRef?.current) {
             changeSelectedItem && changeSelectedItem(val)
             contextMenuRef.current.show(evt);
@@ -76,5 +76,3 @@ const Table = ({selectedItem, contextMenuRef, changeSelectedItem, value = [], ta
         </table>
     );
 };
-
-export default memo(Table);

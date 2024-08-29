@@ -1,6 +1,6 @@
 import {action} from "@storybook/addon-actions";
 import {Meta, StoryObj} from "@storybook/react";
-import InputText from "../components/InputText/InputText";
+import {InputText} from "../components/InputText/InputText";
 
 export default {
     title: 'Components/InputText',

@@ -15,7 +15,7 @@ export type ContextMenuRef = {
     show: (mouseEvent: any) => void;
 }
 
-const ContextMenu = forwardRef<ContextMenuRef, ContextMenuProps>(({
+export const ContextMenu = forwardRef<ContextMenuRef, ContextMenuProps>(({
                                                                       items = [],
                                                                       style
                                                                   }, ref) => {
@@ -62,5 +62,3 @@ const ContextMenu = forwardRef<ContextMenuRef, ContextMenuProps>(({
         </div>
     );
 });
-
-export default ContextMenu;

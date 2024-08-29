@@ -12,12 +12,20 @@ interface DropdownProps {
     styles?: CSSProperties;
 }
 
-const Dropdown = ({items = [], selectItem, selectedItem, placeholder = '', label = 'label', value, styles}: DropdownProps) => {
+export const Dropdown = ({
+                             items = [],
+                             selectItem,
+                             selectedItem,
+                             placeholder = '',
+                             label = 'label',
+                             value,
+                             styles
+                         }: DropdownProps) => {
 
     const [isShow, setIsShow] = useState<boolean>(false);
     const [positionCSSList, setPositionCSSList] = useState<CSSProperties>({});
-    const inputDropdown = useRef<HTMLDivElement>();
-    const stylePlaceHolder = !selectItem && placeholder?  s.placeholder : '';
+    const inputDropdown = useRef<HTMLDivElement | null>(null);
+    const stylePlaceHolder = !selectItem && placeholder ? s.placeholder : '';
 
     useEffect(() => {
 
@@ -26,9 +34,11 @@ const Dropdown = ({items = [], selectItem, selectedItem, placeholder = '', label
         }
 
         document.addEventListener('click', hide);
-        const listClientRect: DOMRect = inputDropdown.current.getBoundingClientRect();
-        setPositionCSSList({top: listClientRect.bottom, left: listClientRect.left});
+        if (inputDropdown.current) {
+            const listClientRect: DOMRect = inputDropdown.current.getBoundingClientRect();
+            setPositionCSSList({top: listClientRect.bottom, left: listClientRect.left});
 
+        }
 
         return () => {
             document.removeEventListener('click', hide);
@@ -62,5 +72,3 @@ const Dropdown = ({items = [], selectItem, selectedItem, placeholder = '', label
         </>
     );
 };
-
-export default Dropdown;

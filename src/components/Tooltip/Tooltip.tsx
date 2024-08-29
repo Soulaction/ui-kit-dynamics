@@ -1,4 +1,5 @@
-import React, {memo, MutableRefObject, useEffect, useState} from 'react';
+import React, {MutableRefObject, useEffect, useState} from 'react';
+import ReactDOM from 'react-dom';
 import s from './Tooltip.module.css';
 
 interface TooltipProps {
@@ -9,19 +10,23 @@ interface TooltipProps {
     text?: string;
 }
 
-const Tooltip = ({
+export const Tooltip = ({
                      showDelay = 0,
                      hideDelay = 0,
                      refHTMLElement,
                      position = 'right',
                      text
                  }: TooltipProps) => {
-    console.log('Tooltip');
+    console.log('Tooltip', showDelay);
+    const [tooltipContainer] = useState(() => document.createElement('div'));
     const [positionStyle, setPositionStyle] = useState<any>({});
     const [type, setType] = useState<string>('');
+    if (!refHTMLElement) {
+        return;
+    }
 
     useEffect(() => {
-        console.log('useEffect Tooltip');
+        console.log('useEffect Tooltip', refHTMLElement);
 
         const targetPosition: { left: number, top: number }[] = [];
         const clientRect: DOMRect = refHTMLElement.current.getBoundingClientRect();
@@ -46,6 +51,7 @@ const Tooltip = ({
         });
 
         function show() {
+            console.log('show');
             clearTimeout(timeOutHide);
             timeOutShow = setTimeout(() => {
                 switch (position) {
@@ -75,22 +81,20 @@ const Tooltip = ({
                 setType('');
             }, hideDelay);
         }
+        document.body.append(tooltipContainer);
 
         refHTMLElement.current.addEventListener('mouseover', show);
         refHTMLElement.current.addEventListener('mouseleave', hide);
 
         return () => {
-            refHTMLElement.current.removeEventListener('mouseover', show);
-            refHTMLElement.current.removeEventListener('mouseleave', hide);
-        };
+            tooltipContainer.remove();
+        }
     }, []);
 
-
-    return (
+    return ReactDOM.createPortal(
         type && <div className={s.tooltip + ' ' + type} style={{...positionStyle}}>
             {text}
-        </div>
+        </div>,
+        tooltipContainer
     );
 };
-
-export default memo(Tooltip);

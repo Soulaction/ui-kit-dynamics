@@ -9,7 +9,7 @@ interface InputProps {
     disabled?: boolean,
 }
 
-const InputText = ({
+export const InputText = ({
                        value,
                        onChange,
                        size = 'normal',
@@ -43,5 +43,3 @@ const InputText = ({
                {...props}/>
     );
 };
-
-export default memo(InputText);

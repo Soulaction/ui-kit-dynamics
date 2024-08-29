@@ -1,4 +1,4 @@
-import Dropdown from "../components/Dropdown/Dropdown";
+import {Dropdown} from "../components/Dropdown/Dropdown";
 import {Meta, StoryObj} from "@storybook/react";
 import {action} from "@storybook/addon-actions";
 

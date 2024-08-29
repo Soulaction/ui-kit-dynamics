@@ -1,7 +1,7 @@
 import React, {useRef, useState} from "react";
 import {Meta, StoryObj} from "@storybook/react";
-import Table from "../components/Table/Table";
-import ContextMenu, {ContextMenuRef, MenuItem} from "../components/ContextMenu/ContextMenu";
+import {Table} from "../components/Table/Table";
+import {ContextMenu, ContextMenuRef, MenuItem} from "../components/ContextMenu/ContextMenu";
 
 export default {
     title: 'Components/Table',

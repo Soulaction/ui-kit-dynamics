@@ -21,7 +21,7 @@ export const Button = memo(({
                     ...props
                 }: ButtonProps) => {
 
-    let sizeClass: string;
+    let sizeClass: string = '';
     let typeButtonClass: string;
 
     console.log('Button');

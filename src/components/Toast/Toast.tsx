@@ -47,8 +47,8 @@ export const Toast = forwardRef<ToastRef, ToastProps>(({
         console.log(message);
         setMessages([...messages, message]);
         setTimeout(() => {
-            deleteMessage(message.id);
-        }, message.life);
+            deleteMessage(message.id!);
+        }, message.life ?? 0);
     }
 
     const deleteMessage = (id: number): void => {
@@ -61,7 +61,7 @@ export const Toast = forwardRef<ToastRef, ToastProps>(({
                 messages.map((msg) =>
                     <MessageComponent key={msg.id}
                                       messageInfo={msg}
-                                      onHide={() => deleteMessage(msg.id)}/>
+                                      onHide={() => deleteMessage(msg.id!)}/>
                 )
             }
         </div>

@@ -39,7 +39,12 @@ export default {
             description: 'Указывает на возможность перетягивания',
         },
         children: {
-            control: {disable: true},
+            control: {type: 'select', labels: {text: 'Текст', block: 'Блок'}},
+            options: ['text', 'block'],
+            mapping: {
+                text: <p>Текст модального окна</p>,
+                block: <div style={{width: '100px', height: '100px', backgroundColor: 'red'}}></div>
+            },
             description: 'Позволяет передавать контент в виде jsx внутрь модального окна',
         }
     },

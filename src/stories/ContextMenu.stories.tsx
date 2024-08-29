@@ -1,9 +1,8 @@
 import {Meta, StoryObj} from "@storybook/react";
-import ContextMenu, {ContextMenuRef} from "../components/ContextMenu/ContextMenu";
-import {action} from "@storybook/addon-actions";
+import {ContextMenu, ContextMenuRef} from "../components/ContextMenu/ContextMenu";
 import React, {useRef} from "react";
 
-const meta: Meta<typeof ContextMenu> = {
+export default {
     title: 'Components/ContextMenu',
     component: ContextMenu,
     parameters: {
@@ -18,9 +17,7 @@ const meta: Meta<typeof ContextMenu> = {
             description: "Стили контекстного меню"
         }
     }
-};
-
-export default meta;
+} as Meta<typeof ContextMenu>;
 
 type Story = StoryObj<typeof ContextHooks>;
 

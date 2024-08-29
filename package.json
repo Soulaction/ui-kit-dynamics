@@ -1,12 +1,13 @@
 {
   "name": "ui-kit-dynamics",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "library ui components",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build -o ./sb-static"
+    "build-storybook": "storybook build -o ./sb-static",
+    "publish-npm": "npm run build && npm version patch && npm publish --access public"
   },
   "author": "Dmitry",
   "license": "ISC",
@@ -21,6 +22,7 @@
     "@storybook/react": "^8.1.11",
     "@storybook/react-webpack5": "^8.1.11",
     "@storybook/test": "^8.1.11",
+    "@types/react-dom": "^18.3.0",
     "css-loader": "^7.1.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
