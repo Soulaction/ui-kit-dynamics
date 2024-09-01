@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import {useRef} from "react";
 import {Meta, StoryObj} from "@storybook/react";
 import {Toast} from "../components/Toast/Toast";
 import {ToastRef} from "../components/Toast/types/Message";

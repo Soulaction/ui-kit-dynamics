@@ -1,4 +1,4 @@
-import React, {CSSProperties, forwardRef, memo, useEffect, useImperativeHandle, useState} from 'react';
+import {CSSProperties, forwardRef, memo, useEffect, useImperativeHandle, useState} from 'react';
 import s from './ContextMenu.module.css';
 
 interface ContextMenuProps {

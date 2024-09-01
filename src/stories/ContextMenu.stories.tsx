@@ -1,6 +1,6 @@
 import {Meta, StoryObj} from "@storybook/react";
 import {ContextMenu, ContextMenuRef} from "../components/ContextMenu/ContextMenu";
-import React, {useRef} from "react";
+import {useRef} from "react";
 
 export default {
     title: 'Components/ContextMenu',

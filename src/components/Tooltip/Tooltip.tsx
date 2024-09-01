@@ -1,4 +1,4 @@
-import React, {MutableRefObject, useEffect, useState} from 'react';
+import {MutableRefObject, useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
 import s from './Tooltip.module.css';
 

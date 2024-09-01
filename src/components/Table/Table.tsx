@@ -1,4 +1,4 @@
-import React, {CSSProperties, memo, ReactNode, SyntheticEvent, useEffect} from 'react';
+import {CSSProperties, ReactNode, SyntheticEvent, useEffect} from 'react';
 import s from './Table.module.css'
 import {ContextMenuRef} from "../ContextMenu/ContextMenu";
 

@@ -1,4 +1,4 @@
-import React, {CSSProperties, memo, ReactNode, useEffect, useRef, useState} from 'react';
+import {CSSProperties, memo, ReactNode, useEffect, useRef, useState} from 'react';
 import s from './Dialog.module.css';
 import cross from "../../assets/cross.svg";
 import maxsize from "../../assets/maximize.svg";

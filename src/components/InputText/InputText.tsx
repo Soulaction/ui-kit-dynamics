@@ -1,4 +1,4 @@
-import React, {ChangeEvent, memo, useEffect} from 'react';
+import {ChangeEvent, memo, useEffect} from 'react';
 import s from './InputText.module.css'
 
 interface InputProps {

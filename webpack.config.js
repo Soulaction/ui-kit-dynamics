@@ -10,9 +10,6 @@ module.exports = {
     resolve: {
         extensions: ['.ts', '.tsx']
     },
-    externals: {
-        react: 'react'
-    },
     module: {
         rules: [
             {
