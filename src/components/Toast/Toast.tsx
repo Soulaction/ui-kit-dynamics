@@ -1,4 +1,4 @@
-import {CSSProperties, forwardRef, useEffect, useImperativeHandle, useState} from 'react';
+import React, {CSSProperties, forwardRef, useEffect, useImperativeHandle, useState} from 'react';
 import s from './Toast.module.css';
 import {Message, ToastProps, ToastRef} from "./types/Message";
 import MessageComponent from "./components/Message/Message";

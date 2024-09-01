@@ -1,6 +1,6 @@
 {
   "name": "ui-kit-dynamics",
-  "version": "1.0.13",
+  "version": "1.0.18",
   "description": "library ui components",
   "main": "./lib/index.js",
   "scripts": {
@@ -24,6 +24,7 @@
     "@storybook/test": "^8.1.11",
     "@types/react-dom": "^18.3.0",
     "css-loader": "^7.1.2",
+    "mini-css-extract-plugin": "^2.9.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "storybook": "^8.1.11",
@@ -36,10 +37,8 @@
     "lib"
   ],
   "types": "lib/index.d.ts",
-  "dependencies": {},
   "peerDependencies": {
     "react": "*",
-    "react-dom": "*",
-    "typescript": "*"
+    "react-dom": "*"
   }
 }

@@ -1,4 +1,4 @@
-import {CSSProperties, useEffect, useRef, useState} from 'react';
+import React, {CSSProperties, useEffect, useRef, useState} from 'react';
 import arrowDown from '../../assets/arrowDown.svg'
 import s from './Dropdown.module.css'
 
