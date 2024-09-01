@@ -1,8 +1,8 @@
 {
   "name": "ui-kit-dynamics",
-  "version": "1.0.4",
+  "version": "1.0.9",
   "description": "library ui components",
-  "main": "index.js",
+  "main": "./lib/index.js",
   "scripts": {
     "build": "webpack",
     "storybook": "storybook dev -p 6006",
@@ -33,9 +33,13 @@
     "webpack-cli": "^5.1.4"
   },
   "files": [
-    "dist"
+    "lib"
   ],
-  "dependencies": {
-    "@types/react": "^18.3.3"
+  "types": "lib/index.d.ts",
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*",
+    "typescript": "*"
   }
 }
