@@ -1,6 +1,6 @@
 {
   "name": "ui-kit-dynamics",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "description": "library ui components",
   "main": "./lib/index.js",
   "scripts": {
