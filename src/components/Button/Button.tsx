@@ -1,5 +1,6 @@
 import React, {memo, useEffect} from 'react';
 import s from "./Button.module.css";
+import '../../styles/global.css';
 
 interface ButtonProps {
 
