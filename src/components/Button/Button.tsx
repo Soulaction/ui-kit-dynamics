@@ -1,5 +1,5 @@
-import React, {memo, useEffect} from 'react';
-import s from "./Button.module.css";
+import {memo, useEffect} from 'react';
+import * as s from "./Button.module.css";
 
 interface ButtonProps {
 
@@ -25,11 +25,13 @@ export const Button = memo(({
     let typeButtonClass: string;
 
     console.log('Button');
+    console.log(s, '--------------------------------12')
+
 
     useEffect(() => {
         console.log('useEffect Button');
     }, []);
-
+    debugger
     switch (size) {
         case 'small':
             sizeClass = s['button-small'];

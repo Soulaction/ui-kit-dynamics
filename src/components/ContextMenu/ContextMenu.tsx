@@ -16,9 +16,9 @@ export type ContextMenuRef = {
 }
 
 export const ContextMenu = forwardRef<ContextMenuRef, ContextMenuProps>(({
-                                                                      items = [],
-                                                                      style
-                                                                  }, ref) => {
+                                                                             items = [],
+                                                                             style
+                                                                         }, ref) => {
 
     const [showData, setShowData] = useState<{ top: number, left: number } | null>(null);
     console.log('ContextMenu');

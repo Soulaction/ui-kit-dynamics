@@ -19,13 +19,13 @@ export interface Column {
 
 export const Table = ({selectedItem, contextMenuRef, changeSelectedItem, value = [], tableStyle, column = []}: TableProps) => {
 
-    console.log('Table', );
+    console.log('Table');
 
     useEffect(() => {
         console.log('useEffect Table');
     }, []);
 
-    const renderTemplateBody = (templateBody: ReactNode | ((data: any) => React.ReactNode), value: any): ReactNode => {
+    const renderTemplateBody = (templateBody: ReactNode | ((data: any) => ReactNode), value: any): ReactNode => {
         if (typeof templateBody === 'function') {
             return templateBody(value);
         } else {

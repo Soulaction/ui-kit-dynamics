@@ -1,16 +1,23 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "commonjs",
+    "module": "ESNext",
     "jsx": "react-jsx",
     "strict": true,
+    "moduleResolution": "node",
     "noImplicitAny": false,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "lib": [ "es2015", "dom" ],
     "outDir": "./lib/",
     "sourceMap": true,
     "declaration": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "lib", "./src/stories"]
+  "exclude": ["node_modules", "lib", "./src/stories"],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
 }
