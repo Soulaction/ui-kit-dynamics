@@ -1,4 +1,4 @@
-import s from './Message.module.css'
+import * as s from './Message.module.css'
 import {Message as MessageType} from "../../types/Message";
 import cross from "../../../../assets/cross.svg";
 import check from "../../../../assets/check.svg";

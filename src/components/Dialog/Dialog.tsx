@@ -1,5 +1,5 @@
 import React, {CSSProperties, memo, ReactNode, useEffect, useRef, useState} from 'react';
-import s from './Dialog.module.css';
+import * as s from './Dialog.module.css';
 import cross from "../../assets/cross.svg";
 import maxsize from "../../assets/maximize.svg";
 import minsize from "../../assets/minimize.svg";
@@ -29,11 +29,6 @@ export const Dialog = memo(({
 
     const position = useRef<number[]>([0, 0]);
     const stateDraggable = useRef<boolean>(draggable ?? false);
-    console.log('Dialog');
-
-    useEffect(() => {
-        console.log('useEffect Dialog');
-    }, []);
 
     const changeSizeDialog = (isMax: boolean): void => {
 

@@ -24,9 +24,9 @@ module.exports = {
                 exclude: /node_modules/,
             },
             {
-                test: /\.css$/,
+                test: /\.module\.css$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    'style-loader',
                     {
                         loader: 'css-loader',
                         options: {
@@ -34,6 +34,12 @@ module.exports = {
                         },
                     },
                 ],
+            },
+            // Для обычных CSS (не CSS-модулей)
+            {
+                test: /\.css$/,
+                exclude: /\.module\.css$/,
+                use: ['style-loader', 'css-loader'],
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,

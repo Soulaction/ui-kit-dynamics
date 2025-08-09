@@ -1,5 +1,5 @@
 import React, {CSSProperties, forwardRef, memo, useEffect, useImperativeHandle, useState} from 'react';
-import s from './ContextMenu.module.css';
+import * as s from './ContextMenu.module.css';
 
 interface ContextMenuProps {
     items: MenuItem[];
@@ -21,7 +21,6 @@ export const ContextMenu = forwardRef<ContextMenuRef, ContextMenuProps>(({
                                                                   }, ref) => {
 
     const [showData, setShowData] = useState<{ top: number, left: number } | null>(null);
-    console.log('ContextMenu');
 
     useImperativeHandle<ContextMenuRef, ContextMenuRef>(ref, () => {
         return {
@@ -30,7 +29,6 @@ export const ContextMenu = forwardRef<ContextMenuRef, ContextMenuProps>(({
     })
 
     useEffect(() => {
-        console.log('useEffect ContextMenu');
         const hide = () => setShowData(null);
         document.addEventListener('click', hide);
 

@@ -1,5 +1,5 @@
-import React, {CSSProperties, forwardRef, useEffect, useImperativeHandle, useState} from 'react';
-import s from './Toast.module.css';
+import React, {CSSProperties, forwardRef, useImperativeHandle, useState} from 'react';
+import * as s from './Toast.module.css';
 import {Message, ToastProps, ToastRef} from "./types/Message";
 import MessageComponent from "./components/Message/Message";
 
@@ -9,11 +9,6 @@ export const Toast = forwardRef<ToastRef, ToastProps>(({
 
     const [messages, setMessages] = useState<Message[]>([]);
     const stylePosition: CSSProperties = {};
-    console.log('Toast', messages);
-
-    useEffect(() => {
-        console.log('useEffect Toast');
-    }, []);
 
     useImperativeHandle<ToastRef, ToastRef>(ref, () => {
         return {
@@ -44,7 +39,6 @@ export const Toast = forwardRef<ToastRef, ToastProps>(({
 
     const show = (message: Message): void => {
         message.id = message.id ?? (message.id = Date.now());
-        console.log(message);
         setMessages([...messages, message]);
         setTimeout(() => {
             deleteMessage(message.id!);

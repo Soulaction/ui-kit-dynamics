@@ -1,6 +1,6 @@
 import React, {MutableRefObject, useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
-import s from './Tooltip.module.css';
+import * as s from './Tooltip.module.css';
 
 interface TooltipProps {
     showDelay?: number;
@@ -17,7 +17,6 @@ export const Tooltip = ({
                      position = 'right',
                      text
                  }: TooltipProps) => {
-    console.log('Tooltip', showDelay);
     const [tooltipContainer] = useState(() => document.createElement('div'));
     const [positionStyle, setPositionStyle] = useState<any>({});
     const [type, setType] = useState<string>('');
@@ -26,7 +25,6 @@ export const Tooltip = ({
     }
 
     useEffect(() => {
-        console.log('useEffect Tooltip', refHTMLElement);
 
         const targetPosition: { left: number, top: number }[] = [];
         const clientRect: DOMRect = refHTMLElement.current.getBoundingClientRect();

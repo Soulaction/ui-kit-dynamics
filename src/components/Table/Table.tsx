@@ -1,5 +1,5 @@
 import React, {CSSProperties, ReactNode, SyntheticEvent, useEffect} from 'react';
-import s from './Table.module.css'
+import * as s from './Table.module.css'
 import {ContextMenuRef} from "../ContextMenu/ContextMenu";
 
 interface TableProps {
@@ -18,12 +18,6 @@ export interface Column {
 }
 
 export const Table = ({selectedItem, contextMenuRef, changeSelectedItem, value = [], tableStyle, column = []}: TableProps) => {
-
-    console.log('Table', );
-
-    useEffect(() => {
-        console.log('useEffect Table');
-    }, []);
 
     const renderTemplateBody = (templateBody: ReactNode | ((data: any) => React.ReactNode), value: any): ReactNode => {
         if (typeof templateBody === 'function') {

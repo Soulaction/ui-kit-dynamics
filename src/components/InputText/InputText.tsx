@@ -1,29 +1,26 @@
 import React, {ChangeEvent, useEffect} from 'react';
-import s from './InputText.module.css'
+import * as s from './InputText.module.css'
 
 interface InputProps {
     value: string | number,
     onChange: (htmlInputElement: ChangeEvent<HTMLInputElement>) => void,
     size?: 'small' | 'normal' | 'large',
     valid?: boolean,
+    className?: string,
     disabled?: boolean,
 }
 
 export const InputText = ({
-                       value,
-                       onChange,
-                       size = 'normal',
-                       valid,
-                       ...props
-                   }: InputProps) => {
+                              value,
+                              onChange,
+                              size = 'normal',
+                              valid,
+                              className = '',
+                              ...props
+                          }: InputProps) => {
 
     const validClass: string = valid ? '' : s['input-invalid'];
     let sizeClass: string;
-    console.log('InputText');
-
-    useEffect(() => {
-        console.log('useEffect InputText');
-    }, []);
 
     switch (size) {
         case 'small':
@@ -37,7 +34,7 @@ export const InputText = ({
     }
 
     return (
-        <input className={[s.input, sizeClass, validClass].join(' ')}
+        <input className={[s.input, sizeClass, validClass, className].join(' ')}
                value={value}
                onChange={(e: ChangeEvent<HTMLInputElement>) => onChange(e)}
                {...props}/>

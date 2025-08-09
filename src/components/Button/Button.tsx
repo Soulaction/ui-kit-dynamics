@@ -1,5 +1,5 @@
-import React, {memo, useEffect} from 'react';
-import s from "./Button.module.css";
+import React, {memo, SyntheticEvent, useEffect} from 'react';
+import * as s from "./Button.module.css";
 import '../../styles/global.css';
 
 interface ButtonProps {
@@ -8,7 +8,7 @@ interface ButtonProps {
     size?: 'small' | 'normal' | 'large';
     typeButton?: 'primary' | 'success' | 'danger';
     disabled?: boolean;
-    onClick: () => void;
+    onClick: (evt: SyntheticEvent) => void;
 }
 
 /**
@@ -23,13 +23,7 @@ export const Button = memo(({
                 }: ButtonProps) => {
 
     let sizeClass: string = '';
-    let typeButtonClass: string;
-
-    console.log('Button');
-
-    useEffect(() => {
-        console.log('useEffect Button');
-    }, []);
+    let typeButtonClass: string = '';
 
     switch (size) {
         case 'small':
@@ -47,8 +41,6 @@ export const Button = memo(({
         case 'danger':
             typeButtonClass = s['button-danger'];
             break;
-        default:
-            typeButtonClass = s['button-primary'];
     }
 
     return (

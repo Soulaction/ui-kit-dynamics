@@ -1,4 +1,4 @@
-import {MutableRefObject, SyntheticEvent, useCallback, useEffect, useState} from "react";
+import {MutableRefObject, SyntheticEvent, useCallback, useEffect, useRef, useState} from "react";
 
 export interface FormControl<K> {
     register: (controlName: string, validateOption: ValidateOption[]) => ControlProperty;
@@ -20,6 +20,7 @@ export interface ControlProperty {
     onBlur: (element: SyntheticEvent) => void;
     name: string;
     value: string;
+    valid: boolean;
 }
 
 export type FormState<K> = {
@@ -32,10 +33,10 @@ export type FormState<K> = {
 }
 
 const validate = (value: string, controlName: string, validateOption: ValidateOption[]): FormState<any> => {
-    if (value === undefined) {
+    if (value === null || value === undefined) {
         throw new Error('Not Value')
     }
-    const newFormState: FormState<any> = {values: {}, errors: {}};
+    const newFormState: FormState<any> = {values: {}, errors: [] as any};
     newFormState.values = {...newFormState.values, [controlName]: value};
     newFormState.errors = {...newFormState.errors, [controlName]: []};
 
@@ -43,10 +44,10 @@ const validate = (value: string, controlName: string, validateOption: ValidateOp
         if ('required' in options && !value) {
             newFormState.errors[controlName]!.push(options.message)
         }
-        if ('min' in options && parseInt(value) < options.min) {
+        if ('min' in options && +value < options.min) {
             newFormState.errors[controlName]!.push(options.message)
         }
-        if ('max' in options && parseInt(value) > options.max) {
+        if ('max' in options && +value > options.max) {
             newFormState.errors[controlName]!.push(options.message)
         }
         if ('minLength' in options && value.length < options.minLength) {
@@ -55,12 +56,12 @@ const validate = (value: string, controlName: string, validateOption: ValidateOp
         if ('maxLength' in options && value.length > options.maxLength) {
             newFormState.errors[controlName]!.push(options.message)
         }
-        if ('pattern' in options && !(new RegExp(options.pattern).test(value))) {
+        if ('pattern' in options && new RegExp(options.pattern).test(value)) {
             newFormState.errors[controlName]!.push(options.message)
         }
 
     })
-    !newFormState!.errors[controlName]!.length && (newFormState.errors[controlName] = null);
+    !newFormState.errors[controlName]!.length && (newFormState.errors[controlName] = null);
     return newFormState;
 }
 
@@ -123,14 +124,15 @@ export const useForm = <T>(refHTMLForm: MutableRefObject<HTMLFormElement>, initO
         const onBlur = (data: SyntheticEvent | string) => {
             changeData(data, controlName, validateOption, setFormState);
         }
+        const valid = !!!formState.errors[controlName];
 
-        return {name: controlName, value: formState.values[controlName] || '', onChange, onBlur};
+        return {name: controlName, value: formState.values[controlName] || '', valid, onChange, onBlur};
     }
 
     const reset = useCallback((evt: SyntheticEvent) => {
         evt.preventDefault();
         refHTMLForm.current.reset();
-        setFormState(initialize<T>(refHTMLForm.current, null));
+        setFormState(initialize(refHTMLForm.current, {} as any));
     }, []);
 
     const checkValidForm = useCallback(() => {
