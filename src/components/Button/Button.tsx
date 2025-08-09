@@ -1,6 +1,5 @@
-import React, {memo, SyntheticEvent, useEffect} from 'react';
+import {memo, useEffect} from 'react';
 import * as s from "./Button.module.css";
-import '../../styles/global.css';
 
 interface ButtonProps {
 
@@ -16,7 +15,7 @@ interface ButtonProps {
  */
 export const Button = memo(({
                     label,
-                    typeButton = 'primary',
+                    typeButton = 'button-primary',
                     size = 'normal',
                     onClick,
                     ...props
