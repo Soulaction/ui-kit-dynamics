@@ -1,4 +1,4 @@
-import {memo, useEffect} from 'react';
+import {memo, SyntheticEvent} from 'react';
 import * as s from "./Button.module.css";
 
 interface ButtonProps {
@@ -15,7 +15,7 @@ interface ButtonProps {
  */
 export const Button = memo(({
                     label,
-                    typeButton = 'button-primary',
+                    typeButton = 'primary',
                     size = 'normal',
                     onClick,
                     ...props
@@ -23,6 +23,7 @@ export const Button = memo(({
 
     let sizeClass: string = '';
     let typeButtonClass: string = '';
+    console.log(s, '-----------------------');
 
     switch (size) {
         case 'small':

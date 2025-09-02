@@ -1,5 +1,5 @@
 import {Meta, StoryObj} from "@storybook/react";
-import {ContextMenu, ContextMenuRef} from "../components/ContextMenu/ContextMenu";
+import {ContextMenu, ContextMenuRef} from "../components/ContextMenu";
 import {useRef} from "react";
 
 export default {

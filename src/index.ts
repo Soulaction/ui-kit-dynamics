@@ -1,3 +1,4 @@
+import '../src/styles/global.css';
 export {Button} from './components/Button/Button';
 export * from './components/ContextMenu';
 export {Dialog} from './components/Dialog/Dialog';

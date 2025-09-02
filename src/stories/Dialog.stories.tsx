@@ -2,6 +2,7 @@ import type {Meta, StoryObj} from '@storybook/react';
 import {action} from '@storybook/addon-actions';
 import {Dialog} from "../components/Dialog/Dialog";
 import {Button} from "../components/Button/Button";
+import {useState} from "react";
 
 export default {
     title: 'Components/Dialog',

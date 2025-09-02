@@ -1,5 +1,5 @@
 import {CSSProperties, ReactNode, SyntheticEvent, useEffect} from 'react';
-import s from './Table.module.css'
+import * as s from './Table.module.css'
 import {ContextMenuRef} from "../ContextMenu/ContextMenu";
 
 interface TableProps {
@@ -11,21 +11,13 @@ interface TableProps {
     tableStyle?: CSSProperties | undefined;
 }
 
-export interface Column {
+export type Column = {
     header: string;
     field: string;
-    templateBody?: ReactNode | ((data: any) => React.ReactNode);
+    templateCell?: (data?: unknown) => React.ReactNode;
 }
 
 export const Table = ({selectedItem, contextMenuRef, changeSelectedItem, value = [], tableStyle, column = []}: TableProps) => {
-
-    const renderTemplateBody = (templateBody: ReactNode | ((data: any) => React.ReactNode), value: any): ReactNode => {
-        if (typeof templateBody === 'function') {
-            return templateBody(value);
-        } else {
-            return templateBody;
-        }
-    }
 
     const comparison = (selected: any, object: any): boolean => {
         if (!selected || !object) {
@@ -61,7 +53,7 @@ export const Table = ({selectedItem, contextMenuRef, changeSelectedItem, value =
                     onContextMenu={(evt) => howContextMenu(evt, val)}>
                     {column.map(col =>
                         <td className={s.td} key={col.field}>
-                            {col.templateBody ? renderTemplateBody(col.templateBody, val[col.field]) : val[col.field]}
+                            {col.templateCell ? col.templateCell(val) : val[col.field]}
                         </td>
                     )}
                 </tr>

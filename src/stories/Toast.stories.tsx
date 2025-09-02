@@ -1,6 +1,6 @@
 import {useRef} from "react";
 import {Meta, StoryObj} from "@storybook/react";
-import {Toast} from "../components/Toast/Toast";
+import {Toast} from "../components/Toast";
 import {ToastRef} from "../components/Toast/types/Message";
 import {Button} from "../components/Button/Button";
 
