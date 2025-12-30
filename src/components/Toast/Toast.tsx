@@ -34,7 +34,6 @@ export const Toast = forwardRef<ToastRef, ToastProps>(({
             stylePosition.left = '50%';
             stylePosition.transform = 'translate(-50%, -50%)';
             break;
-
     }
 
     const show = (message: Message): void => {

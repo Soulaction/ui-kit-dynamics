@@ -1,10 +1,11 @@
-import {CSSProperties, ReactNode, SyntheticEvent, useEffect} from 'react';
+import {CSSProperties, SyntheticEvent, useLayoutEffect} from 'react';
 import * as s from './Table.module.css'
 import {ContextMenuRef} from "../ContextMenu/ContextMenu";
 
 interface TableProps {
     column: Column[];
     value: any[];
+    rowKey: string;
     contextMenuRef?: { current: ContextMenuRef };
     selectedItem?: any;
     changeSelectedItem?: (data: any) => void;
@@ -17,16 +18,29 @@ export type Column = {
     templateCell?: (data?: unknown) => React.ReactNode;
 }
 
-export const Table = ({selectedItem, contextMenuRef, changeSelectedItem, value = [], tableStyle, column = []}: TableProps) => {
+export const Table = ({
+                          selectedItem,
+                          contextMenuRef,
+                          changeSelectedItem,
+                          rowKey,
+                          value = [],
+                          tableStyle,
+                          column = []
+                      }: TableProps) => {
+
+    useLayoutEffect(() => {
+        if (!rowKey) {
+            console.warn('Enter the rowKey');
+        }
+    }, [rowKey, value]);
 
     const comparison = (selected: any, object: any): boolean => {
         if (!selected || !object) {
             return false;
         }
-        const manyKeyObj = Object.keys(selected) > Object.keys(object) ? selected : object;
 
-        for (const [key, val] of Object.entries(manyKeyObj)) {
-            if (selected[key] !== val) {
+        for (const [key, val] of Object.entries(selected)) {
+            if (object[key] !== val) {
                 return false;
             }
         }
@@ -48,8 +62,8 @@ export const Table = ({selectedItem, contextMenuRef, changeSelectedItem, value =
             </tr>
             </thead>
             <tbody>
-            {value.map(val =>
-                <tr key={Object.values(val).join()} className={comparison(selectedItem, val) ? s.selected : ''}
+            {value.map((val, index) =>
+                <tr key={val[rowKey] ?? index} className={comparison(selectedItem, val) ? s.selected : ''}
                     onContextMenu={(evt) => howContextMenu(evt, val)}>
                     {column.map(col =>
                         <td className={s.td} key={col.field}>
