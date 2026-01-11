@@ -1,4 +1,4 @@
-import {CSSProperties, SyntheticEvent, useLayoutEffect} from 'react';
+import {CSSProperties, ReactNode, SyntheticEvent, useLayoutEffect} from 'react';
 import * as s from './Table.module.css'
 import {ContextMenuRef} from "../ContextMenu/ContextMenu";
 
@@ -10,15 +10,19 @@ interface TableProps {
     selectedItem?: any;
     changeSelectedItem?: (data: any) => void;
     tableStyle?: CSSProperties | undefined;
+    title?: string;
+    templateHeader?: (data?: unknown) => ReactNode;
 }
 
 export type Column = {
     header: string;
     field: string;
-    templateCell?: (data?: unknown) => React.ReactNode;
+    templateCell?: (data?: unknown) => ReactNode;
 }
 
 export const Table = ({
+                          title,
+                          templateHeader,
                           selectedItem,
                           contextMenuRef,
                           changeSelectedItem,
@@ -55,24 +59,30 @@ export const Table = ({
     }
 
     return (
-        <table className={s.table} style={tableStyle}>
-            <thead>
-            <tr>
-                {column.map(col => <th key={col.field} className={s.th}>{col.header}</th>)}
-            </tr>
-            </thead>
-            <tbody>
-            {value.map((val, index) =>
-                <tr key={val[rowKey] ?? index} className={comparison(selectedItem, val) ? s.selected : ''}
-                    onContextMenu={(evt) => howContextMenu(evt, val)}>
-                    {column.map(col =>
-                        <td className={s.td} key={col.field}>
-                            {col.templateCell ? col.templateCell(val) : val[col.field]}
-                        </td>
-                    )}
+        <>
+            <div>
+                {title && <h1>{title}</h1>}
+                {templateHeader && templateHeader()}
+            </div>
+            <table className={s.table} style={tableStyle}>
+                <thead>
+                <tr>
+                    {column.map(col => <th key={col.field} className={s.th}>{col.header}</th>)}
                 </tr>
-            )}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {value.map((val, index) =>
+                    <tr key={val[rowKey] ?? index} className={comparison(selectedItem, val) ? s.selected : ''}
+                        onContextMenu={(evt) => howContextMenu(evt, val)}>
+                        {column.map(col =>
+                            <td className={s.td} key={col.field}>
+                                {col.templateCell ? col.templateCell(val) : val[col.field]}
+                            </td>
+                        )}
+                    </tr>
+                )}
+                </tbody>
+            </table>
+        </>
     );
 };

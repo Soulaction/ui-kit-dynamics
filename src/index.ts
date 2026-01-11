@@ -7,4 +7,5 @@ export {InputText} from './components/InputText/InputText';
 export * from './components/Table';
 export * from './components/Toast';
 export {Tooltip} from './components/Tooltip/Tooltip';
+export {Icon} from './components/Icon/Icon';
 export {useForm} from './hooks/useForm';

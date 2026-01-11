@@ -1,0 +1,12 @@
+import {FC} from "react";
+import {SVGProps} from "../type/icon-type";
+
+export const ArrowDown: FC<SVGProps> = ({color, size}) => (
+    <svg width={size} height={size} color={color} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none">
+            <path id="Path"
+                  d="m26.2929381 9.29424585 1.4141238 1.41430345-11.7070619 11.7055744-11.70706186-11.7055744 1.41412372-1.41430345 10.29193814 10.29075415z"
+                  fill="currentColor"></path>
+        </g>
+    </svg>
+);
