@@ -11,7 +11,7 @@ interface TableProps {
     changeSelectedItem?: (data: any) => void;
     tableStyle?: CSSProperties | undefined;
     title?: string;
-    templateHeader?: (data?: unknown) => ReactNode;
+    TemplateHeader?: () => ReactNode;
 }
 
 export type Column = {
@@ -22,7 +22,7 @@ export type Column = {
 
 export const Table = ({
                           title,
-                          templateHeader,
+                          TemplateHeader,
                           selectedItem,
                           contextMenuRef,
                           changeSelectedItem,
@@ -62,7 +62,7 @@ export const Table = ({
         <>
             <div>
                 {title && <h1>{title}</h1>}
-                {templateHeader && templateHeader()}
+                {TemplateHeader && <TemplateHeader/>}
             </div>
             <table className={s.table} style={tableStyle}>
                 <thead>

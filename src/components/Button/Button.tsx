@@ -3,12 +3,12 @@ import * as s from "./Button.module.css";
 import {IconName} from "../Icon/type/icon-type";
 import {Icon} from "../Icon/Icon";
 
-interface ButtonProps {
 
-    label: string;
-    iconName?: IconName;
-    size?: 'small' | 'normal' | 'large' | 'icon-only';
+type ButtonProps = {
+    label?: string;
     typeButton?: 'primary' | 'success' | 'danger';
+    size: 'small' | 'normal' | 'large';
+    iconName?: IconName;
     disabled?: boolean;
     onClick: (evt: SyntheticEvent) => void;
 }
@@ -36,9 +36,6 @@ export const Button = memo(({
         case 'large':
             sizeClass = s['button-large'];
             break;
-        case 'icon-only':
-            sizeClass = s['button-icon-only'];
-            break;
     }
 
     switch (typeButton) {
@@ -54,8 +51,8 @@ export const Button = memo(({
         <button className={[s.button, typeButtonClass, sizeClass].join(' ')}
                 onClick={onClick}
                 {...props}>
-            {size === 'icon-only' && iconName && <Icon name={iconName}/>}
-            {size !== 'icon-only' && label}
+            {iconName && <Icon name={iconName}/>}
+            {label}
         </button>
     );
 });
