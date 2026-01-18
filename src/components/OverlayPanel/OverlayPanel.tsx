@@ -23,7 +23,7 @@ type CoordinatesOverlay = {
 
 export type OverlayRefType = {
     show: (event: SyntheticEvent<HTMLElement>) => void,
-    hide: (event: SyntheticEvent<HTMLElement>) => void,
+    hide: () => void,
     toggle: (event: SyntheticEvent<HTMLElement>) => void,
 }
 
@@ -36,21 +36,29 @@ export const OverlayPanel: FC<OverlayPanelProps> = forwardRef<OverlayRefType, Ov
      }, ref) => {
 
         const [isOpen, setIsOpen] = useState<boolean>(false);
-        const [targetElement, setTargetElement] = useState<HTMLElement | null>(null);
         const [coordinatesOverlay, setCoordinatesOverlay] = useState<CoordinatesOverlay>(resetPosition);
         const overlayPanel = useRef<HTMLDivElement | null>(null);
 
-        const hide = (event: SyntheticEvent<HTMLElement>) => {
-            hideLocal(event.target as HTMLElement);
+        const hide = () => {
+            setIsOpen(false);
+            setCoordinatesOverlay(resetPosition);
         }
 
-        const hideLocal = (event: Node) => {
-            if (overlayPanel.current
-                && !overlayPanel.current.contains(event)) {
-                setIsOpen(false);
-                setCoordinatesOverlay(resetPosition);
+        useEffect(() => {
+            const {top, left} = coordinatesOverlay;
+            const eventListenerCallback = (event: PointerEvent) => {
+                if (overlayPanel.current
+                    && !overlayPanel.current.contains(event.target as HTMLElement)) {
+                    setIsOpen(false);
+                    setCoordinatesOverlay(resetPosition);
+                }
             }
-        }
+
+            if (Number(top) + Number(left) !== 0) {
+                document.addEventListener('click', eventListenerCallback);
+            }
+            return () => document.removeEventListener('click', eventListenerCallback);
+        }, [coordinatesOverlay]);
 
         useImperativeHandle<OverlayRefType, OverlayRefType>(ref, () => {
             return {
@@ -63,18 +71,18 @@ export const OverlayPanel: FC<OverlayPanelProps> = forwardRef<OverlayRefType, Ov
         const show = (htmlEvent: SyntheticEvent<HTMLElement>) => {
             const htmlElement = htmlEvent.currentTarget;
             if (htmlElement) {
-                setTargetElement(htmlElement);
                 setIsOpen(true);
                 setTimeout(() => {
-                    setCoordinatesOverlay(calcPosition(htmlElement, overlayPanel.current!));
-                    document.addEventListener('click', (event: PointerEvent) => hideLocal(event.target as HTMLElement), {once: true});
+                    if (overlayPanel.current) {
+                        setCoordinatesOverlay(calcPosition(htmlElement, overlayPanel.current));
+                    }
                 });
             }
         }
 
         const toggle = (event: SyntheticEvent<HTMLElement>) => {
             if (isOpen) {
-                hide(event);
+                hide();
             } else {
                 show(event);
             }
