@@ -6,9 +6,11 @@ import {Info} from './icons/Info';
 import {Maximize} from './icons/Maximize';
 import {Minimize} from './icons/Minimize';
 import {Plus} from "./icons/Plus";
+import {MenuBar} from "./icons/MenuBar";
 
 export const iconMap = {
     arrowDown: ArrowDown,
+    menuBar: MenuBar,
     plus: Plus,
     check: Check,
     cross: Cross,

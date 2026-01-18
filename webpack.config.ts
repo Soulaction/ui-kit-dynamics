@@ -17,7 +17,8 @@ export default {
         extensions: ['.ts', '.tsx']
     },
     externals: {
-        'react': 'react'
+        'react': 'react',
+        'react-dom': 'react-dom'
     },
     module: {
         rules: [

@@ -45,7 +45,7 @@ export const Toast = forwardRef<ToastRef, ToastProps>(({
     }
 
     const deleteMessage = (id: number): void => {
-        setMessages((prevState) => [...prevState.filter((el) => el.id !== id)]);
+        setMessages((prevState) => prevState.filter((el) => el.id !== id));
     }
 
     return (

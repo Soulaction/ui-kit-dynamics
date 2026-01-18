@@ -7,10 +7,10 @@ import {Icon} from "../Icon/Icon";
 type ButtonProps = {
     label?: string;
     typeButton?: 'primary' | 'success' | 'danger';
-    size: 'small' | 'normal' | 'large';
+    size?: 'small' | 'normal' | 'large';
     iconName?: IconName;
     disabled?: boolean;
-    onClick: (evt: SyntheticEvent) => void;
+    onClick?: (evt: SyntheticEvent) => void;
 }
 
 /**
