@@ -36,7 +36,7 @@ export const Table = ({
         if (!rowKey) {
             console.warn('Enter the rowKey');
         }
-    }, [rowKey, value]);
+    }, [rowKey]);
 
     const comparison = (selected: any, object: any): boolean => {
         if (!selected || !object) {
@@ -57,13 +57,13 @@ export const Table = ({
             contextMenuRef.current.show(evt);
         }
     }
-
+    console.log(title, TemplateHeader);
     return (
         <>
-            <div>
+            <>
                 {title && <h1>{title}</h1>}
                 {TemplateHeader}
-            </div>
+            </>
             <table className={s.table} style={tableStyle}>
                 <thead>
                 <tr>

@@ -1,8 +1,6 @@
 import React, {CSSProperties, memo, ReactNode, useEffect, useRef, useState} from 'react';
 import * as s from './Dialog.module.css';
-import cross from "../../assets/cross.svg";
-import maxsize from "../../assets/maximize.svg";
-import minsize from "../../assets/minimize.svg";
+import {Icon} from "../Icon/Icon";
 
 interface DialogProps {
     header: string;
@@ -79,15 +77,15 @@ export const Dialog = memo(({
                     {maximizable &&
                         (maxSize ?
                                 <button className={`${s.headerButton} button`} onClick={() => changeSizeDialog(false)}>
-                                    <img src={minsize} alt="Иконка уменьшения размера"/>
+                                    <Icon name='minimize'/>
                                 </button>
                                 :
                                 <button className={`${s.headerButton} button`} onClick={() => changeSizeDialog(true)}>
-                                    <img src={maxsize} alt="Иконка увелечения размера"/>
+                                    <Icon name='maximize'/>
                                 </button>
                         )}
                     <button className={`${s.headerButton} button`} onClick={onHide}>
-                        <img src={cross} alt="Иконка закрытия"/>
+                        <Icon name='cross'/>
                     </button>
                 </div>
                 <div className={s.content}>
