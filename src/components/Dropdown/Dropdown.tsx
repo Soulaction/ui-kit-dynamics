@@ -1,11 +1,13 @@
 import React, {CSSProperties, useEffect, useRef, useState} from 'react';
 import arrowDown from '../../assets/arrowDown.svg'
 import * as s from './Dropdown.module.css'
+import {Icon} from "../Icon/Icon";
 
 interface DropdownProps {
     items: any[];
     selectItem: any;
     selectedItem: (item: any) => void;
+    rowKey: string;
     placeholder?: string;
     label?: string;
     value?: string;
@@ -16,6 +18,7 @@ export const Dropdown = ({
                              items = [],
                              selectItem,
                              selectedItem,
+                             rowKey,
                              placeholder = '',
                              label = 'label',
                              value,
@@ -28,6 +31,9 @@ export const Dropdown = ({
     const stylePlaceHolder = !selectItem && placeholder ? s.placeholder : '';
 
     useEffect(() => {
+        if (!rowKey) {
+            console.warn('Enter the rowKey');
+        }
 
         const hide = () => {
             setIsShow(false);
@@ -37,13 +43,12 @@ export const Dropdown = ({
         if (inputDropdown.current) {
             const listClientRect: DOMRect = inputDropdown.current.getBoundingClientRect();
             setPositionCSSList({top: listClientRect.bottom, left: listClientRect.left});
-
         }
 
         return () => {
             document.removeEventListener('click', hide);
         }
-    }, [])
+    }, [rowKey]);
 
     const select = (item: any) => {
         selectedItem(value ? item[value] : item);
@@ -59,14 +64,15 @@ export const Dropdown = ({
         <>
             <div className={s.inputDropdown} ref={inputDropdown} onClick={show}>
                 <span className={s.dropdownLabel + ' ' + stylePlaceHolder}>{selectItem?.[label] ?? placeholder}</span>
-                <img className={s.dropdownLabelIcon} src={arrowDown} alt="Иконка вниз"/>
+                <Icon className={s.dropdownLabelIcon} name='arrowDown'/>
             </div>
             {isShow &&
                 <ul className={s.list} style={{...positionCSSList, ...styles}}>
-                    {items.map(item =>
-                        <li key={Object.values(item).join()}>
+                    {items.map((item, index) =>
+                        <li key={rowKey ? item[rowKey] : index}>
                             <button className="button btnItem" onClick={() => select(item)}>{item[label]}</button>
-                        </li>)}
+                        </li>
+                    )}
                 </ul>
             }
         </>
