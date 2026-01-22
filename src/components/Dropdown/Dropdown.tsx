@@ -1,16 +1,16 @@
 import React, {CSSProperties, useEffect, useRef, useState} from 'react';
-import arrowDown from '../../assets/arrowDown.svg'
 import * as s from './Dropdown.module.css'
 import {Icon} from "../Icon/Icon";
+import {createPortal} from "react-dom";
 
-interface DropdownProps {
+export type DropdownProps = {
     items: any[];
     selectItem: any;
     selectedItem: (item: any) => void;
     rowKey: string;
     placeholder?: string;
-    label?: string;
-    value?: string;
+    itemLabel?: string;
+    itemValue?: string;
     styles?: CSSProperties;
 }
 
@@ -20,8 +20,8 @@ export const Dropdown = ({
                              selectedItem,
                              rowKey,
                              placeholder = '',
-                             label = 'label',
-                             value,
+                             itemLabel = 'label',
+                             itemValue,
                              styles
                          }: DropdownProps) => {
 
@@ -51,7 +51,7 @@ export const Dropdown = ({
     }, [rowKey]);
 
     const select = (item: any) => {
-        selectedItem(value ? item[value] : item);
+        selectedItem(itemValue ? item[itemValue] : item);
         setIsShow(false);
     }
 
@@ -60,20 +60,34 @@ export const Dropdown = ({
         setIsShow(!isShow)
     }
 
+    const calcLabel = (selectItem: unknown): string => {
+        if (typeof selectItem === 'string') {
+            return selectItem;
+        } else {
+            if (selectItem !== null && typeof selectItem === 'object') {
+                return selectItem[itemLabel];
+            } else {
+                return placeholder;
+            }
+        }
+    }
+
     return (
         <>
             <div className={s.inputDropdown} ref={inputDropdown} onClick={show}>
-                <span className={s.dropdownLabel + ' ' + stylePlaceHolder}>{selectItem?.[label] ?? placeholder}</span>
+                <span
+                    className={s.dropdownLabel + ' ' + stylePlaceHolder}>{calcLabel(selectItem)}</span>
                 <Icon className={s.dropdownLabelIcon} name='arrowDown'/>
             </div>
-            {isShow &&
+            {isShow && createPortal(
                 <ul className={s.list} style={{...positionCSSList, ...styles}}>
                     {items.map((item, index) =>
                         <li key={rowKey ? item[rowKey] : index}>
-                            <button className="button btnItem" onClick={() => select(item)}>{item[label]}</button>
+                            <button className="button btnItem" onClick={() => select(item)}>{item[itemLabel]}</button>
                         </li>
                     )}
-                </ul>
+                </ul>,
+                document.body)
             }
         </>
     );

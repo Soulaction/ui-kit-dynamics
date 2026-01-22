@@ -1,7 +1,8 @@
 import React, {ChangeEvent, useEffect} from 'react';
 import * as s from './InputText.module.css'
 
-interface InputProps {
+export type InputProps = {
+    id?: string;
     value: string | number,
     onChange: (htmlInputElement: ChangeEvent<HTMLInputElement>) => void,
     size?: 'small' | 'normal' | 'large',
@@ -11,6 +12,7 @@ interface InputProps {
 }
 
 export const InputText = ({
+                              id,
                               value,
                               onChange,
                               size = 'normal',
@@ -34,7 +36,8 @@ export const InputText = ({
     }
 
     return (
-        <input className={[s.input, sizeClass, validClass, className].join(' ')}
+        <input id={id}
+               className={[s.input, sizeClass, validClass, className].join(' ')}
                value={value}
                onChange={(e: ChangeEvent<HTMLInputElement>) => onChange(e)}
                {...props}/>
