@@ -1,4 +1,4 @@
-import React, {CSSProperties, forwardRef, memo, useEffect, useImperativeHandle, useState} from 'react';
+import React, {CSSProperties, forwardRef, memo, SyntheticEvent, useEffect, useImperativeHandle, useState} from 'react';
 import * as s from './ContextMenu.module.css';
 
 interface ContextMenuProps {
@@ -8,7 +8,7 @@ interface ContextMenuProps {
 
 export interface MenuItem {
     label: string;
-    command: () => void
+    command: (evt: SyntheticEvent) => void
 }
 
 export type ContextMenuRef = {

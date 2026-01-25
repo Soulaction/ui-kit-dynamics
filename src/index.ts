@@ -2,6 +2,7 @@ import '../src/styles/global.css';
 
 export {Button} from './components/Button/Button';
 export * from './components/ContextMenu';
+export * from './components/ConfirmDialog';
 export {Dialog} from './components/Dialog/Dialog';
 export {Dropdown, DropdownProps} from './components/Dropdown/Dropdown';
 export {InputText, InputProps} from './components/InputText/InputText';
