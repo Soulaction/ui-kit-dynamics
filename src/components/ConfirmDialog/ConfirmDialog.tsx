@@ -9,20 +9,22 @@ export const ConfirmDialog = () => {
     const [isVisible, setIsVisible] = useState<boolean>(false);
 
     useEffect(() => {
-        listenerConfirm((confirmInfo) => setConfirmDialogInfo(confirmInfo));
-        setIsVisible(true);
+        listenerConfirm((confirmInfo) => {
+            setIsVisible(true);
+            setConfirmDialogInfo(confirmInfo);
+        });
         return unsub;
     }, []);
 
     const acceptClick = () => {
-        if(confirmDialogInfo) {
+        if(confirmDialogInfo && confirmDialogInfo.accept) {
             confirmDialogInfo.accept();
         }
         setIsVisible(false);
     }
 
     const rejectClick = () => {
-        if(confirmDialogInfo) {
+        if(confirmDialogInfo && confirmDialogInfo.reject) {
             confirmDialogInfo.reject();
         }
         setIsVisible(false);

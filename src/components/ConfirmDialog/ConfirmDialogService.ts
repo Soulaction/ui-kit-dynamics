@@ -21,5 +21,8 @@ export class ConfirmDialogService {
 
 const confirmDialogService = new ConfirmDialogService();
 
-const {showConfirmDialog, listenerConfirm, unsub} = confirmDialogService;
+const showConfirmDialog = confirmDialogService.showConfirmDialog.bind(confirmDialogService);
+const listenerConfirm = confirmDialogService.listenerConfirm.bind(confirmDialogService);
+const unsub = confirmDialogService.unsub.bind(confirmDialogService);
+
 export {listenerConfirm, showConfirmDialog, unsub};

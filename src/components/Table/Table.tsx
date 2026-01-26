@@ -6,7 +6,7 @@ interface TableProps {
     column: Column[];
     value: any[];
     rowKey: string;
-    contextMenuRef?: { current: ContextMenuRef };
+    contextMenuRef: { current: ContextMenuRef | null};
     selectedItem?: any;
     changeSelectedItem?: (data: any) => void;
     tableStyle?: CSSProperties | undefined;
@@ -52,12 +52,12 @@ export const Table = ({
     }
 
     const howContextMenu = (evt: SyntheticEvent, val) => {
-        if (contextMenuRef?.current) {
+        if (contextMenuRef && contextMenuRef.current) {
             changeSelectedItem && changeSelectedItem(val)
             contextMenuRef.current.show(evt);
         }
     }
-    console.log(title, TemplateHeader);
+
     return (
         <>
             <>
